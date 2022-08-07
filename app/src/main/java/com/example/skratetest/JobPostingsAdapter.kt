@@ -6,25 +6,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class JobPostingsAdapter: RecyclerView.Adapter<SessionsViewHolder>() {
-    private val items: ArrayList<UpcomingSession> = ArrayList()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionsViewHolder {
+class JobPostingsAdapter: RecyclerView.Adapter<JobsViewHolder>() {
+    private val items: ArrayList<JobPosting> = ArrayList()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobsViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_job, parent, false)
-        return SessionsViewHolder(view)
+        return JobsViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SessionsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: JobsViewHolder, position: Int) {
         val currentItem = items[position]
-        holder.mentorName.text = currentItem.mentor_name
-        holder.timings.text = currentItem.timings
-        holder.date.text = currentItem.date
-        holder.sessionType.text = currentItem.session_type
+        holder.role.text = currentItem.role
+        holder.companyName.text = currentItem.organization_name
+        holder.date.text = currentItem.date_posted
+        holder.location.text = currentItem.location
     }
 
-    fun updateSessions(updatedSessions: ArrayList<UpcomingSession>) {
+    fun updateJobs(updatedJobs: ArrayList<JobPosting>) {
         items.clear()
-        items.addAll(updatedSessions)
+        items.addAll(updatedJobs)
         notifyDataSetChanged()
     }
 
@@ -34,8 +34,8 @@ class JobPostingsAdapter: RecyclerView.Adapter<SessionsViewHolder>() {
 }
 
 class JobsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    val mentorName: TextView = itemView.findViewById(R.id.mentor_name)
-    val timings: TextView = itemView.findViewById(R.id.timings)
+    val role: TextView = itemView.findViewById(R.id.role)
+    val location: TextView = itemView.findViewById(R.id.location)
     val date: TextView = itemView.findViewById(R.id.date)
-    val sessionType: TextView = itemView.findViewById(R.id.session_type)
+    val companyName: TextView = itemView.findViewById(R.id.company)
 }

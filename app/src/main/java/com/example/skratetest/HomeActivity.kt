@@ -12,8 +12,10 @@ class HomeActivity : AppCompatActivity() {
     private val url = "https://mocki.io/v1/bb11aecd-ba61-44b9-9e2c-beabc442d818"
     private lateinit var mDashboardStatsAdapter: DashboardStatsAdapter
     private lateinit var mUpcomingSessionsAdapter: UpcomingSessionsAdapter
+    private lateinit var mJobPostingsAdapter: JobPostingsAdapter
     private lateinit var dashboardStatsRecyclerView: RecyclerView
     private lateinit var upcomingSessionsRecyclerView: RecyclerView
+    private lateinit var jobsPostingsRecyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -21,11 +23,15 @@ class HomeActivity : AppCompatActivity() {
         dashboardStatsRecyclerView.layoutManager = LinearLayoutManager(this)
         upcomingSessionsRecyclerView = findViewById(R.id.upcoming_sessions)
         upcomingSessionsRecyclerView.layoutManager = LinearLayoutManager(this)
+        jobsPostingsRecyclerView = findViewById(R.id.job_postings)
+        jobsPostingsRecyclerView.layoutManager = LinearLayoutManager(this)
         fetchData()
         mDashboardStatsAdapter = DashboardStatsAdapter()
         dashboardStatsRecyclerView.adapter = mDashboardStatsAdapter
         mUpcomingSessionsAdapter = UpcomingSessionsAdapter()
         upcomingSessionsRecyclerView.adapter = mUpcomingSessionsAdapter
+        mJobPostingsAdapter = JobPostingsAdapter()
+        jobsPostingsRecyclerView.adapter = mJobPostingsAdapter
     }
 
     private fun fetchData() {
@@ -70,6 +76,7 @@ class HomeActivity : AppCompatActivity() {
                     )
                     jobPostingsArray.add(jobPosting)
                 }
+                mJobPostingsAdapter.updateJobs(jobPostingsArray)
             },
             {
             }
