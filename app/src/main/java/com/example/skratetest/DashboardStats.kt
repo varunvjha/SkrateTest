@@ -1,8 +1,8 @@
 package com.example.skratetest
 
 data class DashboardStats(
-    val profileViews:Int,
-    val mentorshipSessions:Int,
-    val jobsApplied:Int,
-    val skillsVerified:Int
+    val profile_views: Int,
+    val mentorship_sessions:Int,
+    val jobs_applied:Int,
+    val skills_verified:Int
 )
