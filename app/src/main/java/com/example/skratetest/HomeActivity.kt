@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import com.example.skratetest.LoginActivity.Companion.account
+
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var sessionItems: ArrayList<UpcomingSession>
@@ -42,6 +43,9 @@ class HomeActivity : AppCompatActivity() {
         jobsPostingsRecyclerView.layoutManager = LinearLayoutManager(this)
         fetchData()
         mDashboardStatsAdapter = DashboardStatsAdapter()
+        val callback: ItemTouchHelper.Callback = ItemMoveCallback(mDashboardStatsAdapter)
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(dashboardStatsRecyclerView)
         dashboardStatsRecyclerView.adapter = mDashboardStatsAdapter
         mUpcomingSessionsAdapter = UpcomingSessionsAdapter()
         upcomingSessionsRecyclerView.adapter = mUpcomingSessionsAdapter

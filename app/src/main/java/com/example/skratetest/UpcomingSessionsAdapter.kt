@@ -24,6 +24,8 @@ class UpcomingSessionsAdapter: RecyclerView.Adapter<SessionsViewHolder>() {
         holder.sessionType.text = currentItem.session_type
         if (currentItem.session_type == "Review") {
             holder.sessionCard.setCardBackgroundColor(Color.parseColor("#91AEE1"))
+        } else {
+            holder.sessionCard.setCardBackgroundColor(Color.parseColor("#E8C9D1"))
         }
     }
 

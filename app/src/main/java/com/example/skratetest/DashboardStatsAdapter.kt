@@ -1,13 +1,16 @@
 package com.example.skratetest
 
-import android.util.Log
+import android.R.attr.data
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
-class DashboardStatsAdapter: RecyclerView.Adapter<StatsViewHolder>(){
+
+class DashboardStatsAdapter: RecyclerView.Adapter<StatsViewHolder>(), ItemMoveCallback.ItemTouchHelperContract{
     private val itemNames: ArrayList<String> = ArrayList()
     private val itemNumbers:ArrayList<Int> = ArrayList()
     private val items: HashMap<String, Int> = HashMap()
@@ -47,6 +50,27 @@ class DashboardStatsAdapter: RecyclerView.Adapter<StatsViewHolder>(){
 //        itemNumbers.add(dashboardStatsObject.skills_verified)
 //        Log.d("itemnumbers", itemNumbers.toString())
         notifyDataSetChanged()
+    }
+
+    override fun onRowMoved(fromPosition: Int, toPosition: Int) {
+        if (fromPosition<toPosition) {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(itemNames, i, i+1)
+            }
+        } else {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(itemNames, i, i-1)
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onRowSelected(myViewHolder: StatsViewHolder) {
+        myViewHolder.itemView.setBackgroundColor(Color.GRAY)
+    }
+
+    override fun onRowClear(myViewHolder: StatsViewHolder) {
+        myViewHolder.itemView.setBackgroundColor(Color.parseColor("#F6F7FF"))
     }
 }
 
