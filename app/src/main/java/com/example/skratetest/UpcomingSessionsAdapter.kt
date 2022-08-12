@@ -1,9 +1,11 @@
 package com.example.skratetest
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 class UpcomingSessionsAdapter: RecyclerView.Adapter<SessionsViewHolder>() {
@@ -20,10 +22,16 @@ class UpcomingSessionsAdapter: RecyclerView.Adapter<SessionsViewHolder>() {
         holder.timings.text = currentItem.timings
         holder.date.text = currentItem.date
         holder.sessionType.text = currentItem.session_type
+        if (currentItem.session_type == "Review") {
+            holder.sessionCard.setCardBackgroundColor(Color.parseColor("#91AEE1"))
+        }
     }
 
-    fun updateSessions(updatedSessions: ArrayList<UpcomingSession>) {
+    fun updateSessions(updatedSessions: ArrayList<UpcomingSession>, shuffle: Boolean) {
         items.clear()
+        if (shuffle) {
+            updatedSessions.shuffle()
+        }
         items.addAll(updatedSessions)
         notifyDataSetChanged()
     }
@@ -34,6 +42,7 @@ class UpcomingSessionsAdapter: RecyclerView.Adapter<SessionsViewHolder>() {
 }
 
 class SessionsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+    val sessionCard:CardView = itemView.findViewById(R.id.session_type_card)
     val mentorName:TextView = itemView.findViewById(R.id.mentor_name)
     val timings:TextView = itemView.findViewById(R.id.timings)
     val date:TextView = itemView.findViewById(R.id.date)

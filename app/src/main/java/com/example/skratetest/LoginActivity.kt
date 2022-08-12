@@ -16,6 +16,11 @@ import com.google.android.material.button.MaterialButton
 
 
 class LoginActivity : AppCompatActivity() {
+
+    companion object {
+        var account: GoogleSignInAccount? = null
+    }
+
     private val RC_SIGN_IN: Int = 2
     private lateinit var signInButton: MaterialButton
     private lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -28,9 +33,12 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun updateUI(account: GoogleSignInAccount?) {
-        if(account!=null) {
-            startActivity(Intent(this, HomeActivity::class.java))
+    private fun updateUI(acc: GoogleSignInAccount?) {
+        if(acc!=null) {
+            val intent = Intent(this, HomeActivity::class.java)
+            account = acc
+//            intent.putExtra("account", account)
+            startActivity(intent)
             finish()
         }
     }

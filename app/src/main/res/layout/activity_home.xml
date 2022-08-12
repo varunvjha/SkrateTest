@@ -8,8 +8,7 @@
     android:nestedScrollingEnabled="true">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:nestedScrollingEnabled="true">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/logo"
@@ -20,9 +19,11 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageView
+        android:id="@+id/profile_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/person"
+        android:scaleType="centerCrop"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logo"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
@@ -32,10 +33,11 @@
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#FDFDFD"
+        android:background="#F5F5F5"
         app:layout_constraintTop_toBottomOf="@id/logo"/>
 
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/line"
@@ -44,8 +46,8 @@
         android:orientation="vertical">
         
         <com.google.android.material.card.MaterialCardView
-            app:strokeColor="#FDFDFD"
-            app:strokeWidth="4dp"
+            app:strokeColor="#F5F5F5"
+            app:strokeWidth="2dp"
             app:cardCornerRadius="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -67,6 +69,7 @@
                 android:id="@+id/dashboard_stats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginBottom="36dp"
                 android:layout_marginTop="22dp"/>
@@ -75,8 +78,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_marginTop="26dp"
-            app:strokeColor="#FDFDFD"
-            app:strokeWidth="4dp"
+            app:strokeColor="#F5F5F5"
+            app:strokeWidth="2dp"
             app:cardCornerRadius="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -97,6 +100,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/upcoming_sessions"
                     android:layout_width="match_parent"
+                    android:nestedScrollingEnabled="false"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginBottom="36dp"
@@ -105,14 +109,14 @@
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:layout_marginTop="26dp"
-            app:strokeColor="#FDFDFD"
-            app:strokeWidth="4dp"
+            app:strokeColor="#F5F5F5"
+            app:strokeWidth="2dp"
             app:cardCornerRadius="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,6 +130,7 @@
                     android:layout_marginHorizontal="25dp"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/job_postings"
+                    android:nestedScrollingEnabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="25dp"
@@ -134,6 +139,74 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ll1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#F5F5F5"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_clicked"
+                app:layout_constraintLeft_toLeftOf="@id/home"
+                app:layout_constraintRight_toRightOf="@id/home"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <ImageView
+                android:layout_marginTop="16dp"
+                android:id="@+id/home"
+                android:layout_marginStart="40dp"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/home"/>
+            <TextView
+                app:layout_constraintLeft_toLeftOf="@id/home"
+                app:layout_constraintRight_toRightOf="@+id/home"
+                app:layout_constraintTop_toBottomOf="@id/home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins"/>
+
+            <ImageView
+                android:id="@+id/shuffle"
+                android:layout_marginEnd="40dp"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/home"
+                app:layout_constraintBottom_toBottomOf="@id/home"
+                android:src="@drawable/shuffle"/>
+            <TextView
+                app:layout_constraintLeft_toLeftOf="@id/shuffle"
+                app:layout_constraintRight_toRightOf="@+id/shuffle"
+                app:layout_constraintTop_toBottomOf="@id/shuffle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shuffle"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

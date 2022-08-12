@@ -1,13 +1,16 @@
 package com.example.skratetest
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import kotlin.collections.ArrayList
 
 class JobPostingsAdapter: RecyclerView.Adapter<JobsViewHolder>() {
-    private val items: ArrayList<JobPosting> = ArrayList()
+    val items: ArrayList<JobPosting> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobsViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_job, parent, false)
@@ -22,8 +25,11 @@ class JobPostingsAdapter: RecyclerView.Adapter<JobsViewHolder>() {
         holder.location.text = currentItem.location
     }
 
-    fun updateJobs(updatedJobs: ArrayList<JobPosting>) {
+    fun updateJobs(updatedJobs: ArrayList<JobPosting>, shuffle: Boolean) {
         items.clear()
+        if (shuffle) {
+            updatedJobs.shuffle()
+        }
         items.addAll(updatedJobs)
         notifyDataSetChanged()
     }

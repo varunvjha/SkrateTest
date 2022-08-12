@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SkrateTest.iml" filepath="$PROJECT_DIR$/.idea/modules/SkrateTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SkrateTest.app.unitTest.iml" />
     </modules>
   </component>
 </project>
