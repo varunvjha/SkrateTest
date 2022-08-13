@@ -7,10 +7,11 @@
     <TextView
         android:id="@+id/role"
         android:layout_width="wrap_content"
+        android:maxWidth="140dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Flutter\nDeveloper"
+        android:text="Flutter Developer"
         android:fontFamily="@font/poppins"
         android:textStyle="bold"
         android:textSize="22sp"
